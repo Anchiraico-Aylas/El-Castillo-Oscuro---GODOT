@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dowgmk2rlvvmw"]
+
+[ext_resource type="Texture2D" uid="uid://c78fomefdwc1" path="res://images/12 - Live and Coins/LiveBar.png" id="1_2qgru"]
+[ext_resource type="Script" uid="uid://cy42inr74gcip" path="res://scripts/Game_screen.gd" id="1_v5gji"]
+[ext_resource type="PackedScene" uid="uid://dqy7h0infr63t" path="res://scenes/Health_bar.tscn" id="2_w772m"]
+[ext_resource type="Texture2D" uid="uid://chncktha3op27" path="res://images/12 - Live and Coins/CollectibleAir.png" id="3_w772m"]
+
+[node name="GameScreen" type="CanvasLayer"]
+script = ExtResource("1_v5gji")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(-12, 142)
+scale = Vector2(4, 4)
+texture = ExtResource("1_2qgru")
+offset = Vector2(51.5, -7)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 194
+theme_override_constants/margin_top = 130
+theme_override_constants/margin_right = 838
+theme_override_constants/margin_bottom = 425
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="HealthBar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("2_w772m")]
+scale = Vector2(4, 4)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(11, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("3_w772m")
+centered = false
+
+[node name="CollectibleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 29
+text = "0"
